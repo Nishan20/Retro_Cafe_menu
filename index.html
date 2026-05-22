@@ -7,6 +7,9 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
 <style>
 
 *{
@@ -66,6 +69,9 @@ padding:12px 22px;
 border-radius:40px;
 font-weight:600;
 transition:0.3s;
+display:flex;
+align-items:center;
+gap:10px;
 }
 
 .top-links a:hover{
@@ -155,6 +161,31 @@ font-size:15px;
 color:#4b2418;
 }
 
+/* GO TO TOP */
+
+#topBtn{
+position:fixed;
+bottom:25px;
+right:25px;
+width:60px;
+height:60px;
+border:none;
+border-radius:50%;
+background:#4b2418;
+color:white;
+font-size:24px;
+cursor:pointer;
+display:none;
+z-index:9999;
+box-shadow:0 8px 20px rgba(0,0,0,0.3);
+transition:0.3s;
+}
+
+#topBtn:hover{
+transform:scale(1.1);
+background:#c08b3e;
+}
+
 /* MOBILE */
 
 @media(max-width:600px){
@@ -186,11 +217,13 @@ font-size:24px;
 <div class="top-links">
 
 <a href="tel:+919510058462">
-📞 Call Now
+<i class="fa-solid fa-phone"></i>
+Call Now
 </a>
 
 <a href="https://instagram.com/retro_90_cafe_gandhinagar" target="_blank">
-📸 Instagram
+<i class="fa-brands fa-instagram"></i>
+Instagram
 </a>
 
 </div>
@@ -349,7 +382,15 @@ font-size:24px;
 RETRO Cafe • Retro Aesthetic Digital Menu
 </div>
 
+<!-- GO TO TOP BUTTON -->
+
+<button id="topBtn">
+<i class="fa-solid fa-arrow-up"></i>
+</button>
+
 <script>
+
+/* SEARCH */
 
 const searchInput = document.getElementById('searchInput');
 
@@ -409,6 +450,29 @@ item.style.display='flex';
 });
 
 }
+
+});
+
+/* GO TO TOP */
+
+const topBtn = document.getElementById("topBtn");
+
+window.addEventListener("scroll", () => {
+
+if(window.scrollY > 300){
+topBtn.style.display = "block";
+}else{
+topBtn.style.display = "none";
+}
+
+});
+
+topBtn.addEventListener("click", () => {
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 });
 
