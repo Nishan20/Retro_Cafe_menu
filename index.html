@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>RETRO Cafe Menu</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -205,6 +207,7 @@ font-size:24px;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -229,7 +232,7 @@ Instagram
 </div>
 
 <div class="search-box">
-<input type="text" id="searchInput" placeholder="Search menu item...">
+<input type="text" id="searchInput" placeholder="Search menu item or category...">
 </div>
 
 </section>
@@ -239,6 +242,7 @@ Instagram
 <!-- HOT -->
 
 <div class="card">
+
 <h2>Hot Beverages</h2>
 
 <div class="item">
@@ -271,6 +275,7 @@ Instagram
 <!-- SHAKES -->
 
 <div class="card">
+
 <h2>Thick Shakes</h2>
 
 <div class="item">
@@ -295,9 +300,10 @@ Instagram
 
 </div>
 
-<!-- BURGERS -->
+<!-- BURGER -->
 
 <div class="card">
+
 <h2>Burgers</h2>
 
 <div class="item">
@@ -325,6 +331,7 @@ Instagram
 <!-- PIZZA -->
 
 <div class="card">
+
 <h2>Pizza</h2>
 
 <div class="item">
@@ -352,6 +359,7 @@ Instagram
 <!-- FRIES -->
 
 <div class="card">
+
 <h2>Fries</h2>
 
 <div class="item">
@@ -382,7 +390,7 @@ Instagram
 RETRO Cafe • Retro Aesthetic Digital Menu
 </div>
 
-<!-- GO TO TOP BUTTON -->
+<!-- GO TO TOP -->
 
 <button id="topBtn">
 <i class="fa-solid fa-arrow-up"></i>
@@ -402,23 +410,47 @@ let cards = document.querySelectorAll('.card');
 
 cards.forEach(card => {
 
+let heading = card.querySelector('h2').innerText.toLowerCase();
+
 let items = card.querySelectorAll('.item');
+
 let found = false;
+
+/* SEARCH INSIDE ITEMS */
 
 items.forEach(item => {
 
 let text = item.innerText.toLowerCase();
 
-if(text.includes(filter)){
+if(text.includes(filter) || heading.includes(filter)){
+
 item.style.display = 'flex';
 found = true;
+
 }else{
+
 item.style.display = 'none';
+
 }
 
 });
 
+/* IF HEADING MATCHES SHOW ALL ITEMS */
+
+if(heading.includes(filter)){
+
+items.forEach(item=>{
+item.style.display='flex';
+});
+
+found = true;
+
+}
+
+/* SHOW MATCHING CARD */
+
 if(found){
+
 card.style.display = 'block';
 card.classList.add('active');
 
@@ -428,28 +460,26 @@ block:'center'
 });
 
 }else{
+
 card.style.display = 'none';
 card.classList.remove('active');
+
 }
 
-});
+/* RESET */
 
 if(filter === ''){
 
-cards.forEach(card => {
-
 card.style.display='block';
 card.classList.remove('active');
-
-let items = card.querySelectorAll('.item');
 
 items.forEach(item=>{
 item.style.display='flex';
 });
 
-});
-
 }
+
+});
 
 });
 
