@@ -416,7 +416,7 @@ let items = card.querySelectorAll('.item');
 
 let found = false;
 
-/* SEARCH INSIDE ITEMS */
+/* SEARCH ITEMS + HEADINGS */
 
 items.forEach(item => {
 
@@ -435,7 +435,7 @@ item.style.display = 'none';
 
 });
 
-/* IF HEADING MATCHES SHOW ALL ITEMS */
+/* IF HEADING MATCHES SHOW ALL */
 
 if(heading.includes(filter)){
 
@@ -447,17 +447,23 @@ found = true;
 
 }
 
-/* SHOW MATCHING CARD */
+/* SHOW CARD */
 
 if(found){
 
 card.style.display = 'block';
 card.classList.add('active');
 
+/* SCROLL ONLY WHEN SEARCHING */
+
+if(filter !== ''){
+
 card.scrollIntoView({
 behavior:'smooth',
-block:'center'
+block:'start'
 });
+
+}
 
 }else{
 
@@ -475,6 +481,11 @@ card.classList.remove('active');
 
 items.forEach(item=>{
 item.style.display='flex';
+});
+
+window.scrollTo({
+top:0,
+behavior:'smooth'
 });
 
 }
