@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,11 +25,15 @@ color:#2d1a12;
 /* HERO */
 
 .hero{
-padding:70px 20px;
+padding:70px 20px 40px;
 text-align:center;
 background:rgba(33,15,10,0.95);
 color:#f8ead0;
 border-bottom:4px solid #d8b36a;
+position:sticky;
+top:0;
+z-index:1000;
+backdrop-filter:blur(10px);
 }
 
 .hero h1{
@@ -45,28 +48,53 @@ font-size:18px;
 opacity:.9;
 }
 
+/* TOP BUTTONS */
+
+.top-links{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+margin-top:25px;
+}
+
+.top-links a{
+text-decoration:none;
+background:#d8b36a;
+color:#2d140d;
+padding:12px 22px;
+border-radius:40px;
+font-weight:600;
+transition:0.3s;
+}
+
+.top-links a:hover{
+transform:scale(1.05);
+background:#f0cc84;
+}
+
 /* SEARCH */
 
 .search-box{
 max-width:500px;
-margin:30px auto;
+margin:25px auto 0;
 }
 
 .search-box input{
 width:100%;
-padding:14px 20px;
+padding:15px 20px;
 border:none;
 border-radius:50px;
 font-size:16px;
 outline:none;
 }
 
-/* MENU GRID */
+/* MENU */
 
 .container{
 max-width:1200px;
 margin:auto;
-padding:30px 20px;
+padding:35px 20px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:25px;
@@ -80,11 +108,13 @@ padding:25px;
 border-radius:28px;
 box-shadow:0 10px 30px rgba(0,0,0,0.15);
 border:2px solid rgba(130,80,40,0.15);
-transition:0.3s;
+transition:0.4s;
 }
 
-.card:hover{
-transform:translateY(-5px);
+.card.active{
+transform:scale(1.05);
+border:3px solid #c08b3e;
+box-shadow:0 0 30px rgba(192,139,62,0.5);
 }
 
 .card h2{
@@ -106,10 +136,6 @@ border-bottom:1px dashed rgba(0,0,0,0.1);
 
 .item:last-child{
 border:none;
-}
-
-.item span{
-font-size:15px;
 }
 
 .price{
@@ -153,40 +179,59 @@ font-size:24px;
 <body>
 
 <section class="hero">
+
 <h1>RETRO</h1>
 <p>Tea, We & 90's</p>
+
+<div class="top-links">
+
+<a href="tel:+919510058462">
+📞 Call Now
+</a>
+
+<a href="https://instagram.com/retro_90_cafe_gandhinagar" target="_blank">
+📸 Instagram
+</a>
+
+</div>
 
 <div class="search-box">
 <input type="text" id="searchInput" placeholder="Search menu item...">
 </div>
+
 </section>
 
-<div class="container" id="menuContainer">
+<div class="container">
 
-<!-- HOT BEVERAGES -->
+<!-- HOT -->
 
 <div class="card">
 <h2>Hot Beverages</h2>
 
-<div class="item"><span>Hot Tea (ginger)</span><div class="price">₹20</div></div>
-<div class="item"><span>Elaichi Tea</span><div class="price">₹30</div></div>
-<div class="item"><span>Mint Tea</span><div class="price">₹30</div></div>
-<div class="item"><span>Hot Coffee</span><div class="price">₹30</div></div>
-<div class="item"><span>Chocolate Coffee</span><div class="price">₹40</div></div>
-<div class="item"><span>Hot Chocolate</span><div class="price">₹50</div></div>
-
+<div class="item">
+<span>Hot Tea (ginger)</span>
+<div class="price">₹20</div>
 </div>
 
-<!-- COLD -->
+<div class="item">
+<span>Elaichi Tea</span>
+<div class="price">₹30</div>
+</div>
 
-<div class="card">
-<h2>Cold Beverages</h2>
+<div class="item">
+<span>Mint Tea</span>
+<div class="price">₹30</div>
+</div>
 
-<div class="item"><span>Cold Coffee</span><div class="price">₹110</div></div>
-<div class="item"><span>Cold Bournvita</span><div class="price">₹110</div></div>
-<div class="item"><span>Ice Tea</span><div class="price">₹60</div></div>
-<div class="item"><span>Peach Ice Tea</span><div class="price">₹70</div></div>
-<div class="item"><span>Kiwi Ice Tea</span><div class="price">₹70</div></div>
+<div class="item">
+<span>Hot Coffee</span>
+<div class="price">₹30</div>
+</div>
+
+<div class="item">
+<span>Hot Chocolate</span>
+<div class="price">₹50</div>
+</div>
 
 </div>
 
@@ -195,22 +240,52 @@ font-size:24px;
 <div class="card">
 <h2>Thick Shakes</h2>
 
-<div class="item"><span>Oreo Shake</span><div class="price">₹150</div></div>
-<div class="item"><span>Chocolate Shake</span><div class="price">₹150</div></div>
-<div class="item"><span>Nutella Shake</span><div class="price">₹160</div></div>
-<div class="item"><span>Kit-kat Shake</span><div class="price">₹150</div></div>
+<div class="item">
+<span>Oreo Shake</span>
+<div class="price">₹150</div>
+</div>
+
+<div class="item">
+<span>Chocolate Shake</span>
+<div class="price">₹150</div>
+</div>
+
+<div class="item">
+<span>Nutella Shake</span>
+<div class="price">₹160</div>
+</div>
+
+<div class="item">
+<span>Kit-kat Shake</span>
+<div class="price">₹150</div>
+</div>
 
 </div>
 
-<!-- BURGER -->
+<!-- BURGERS -->
 
 <div class="card">
 <h2>Burgers</h2>
 
-<div class="item"><span>Aloo Tikki Burger</span><div class="price">₹60</div></div>
-<div class="item"><span>Veg Classic Burger</span><div class="price">₹80</div></div>
-<div class="item"><span>Double Decker Burger</span><div class="price">₹100</div></div>
-<div class="item"><span>Spicy Paneer Burger</span><div class="price">₹110</div></div>
+<div class="item">
+<span>Aloo Tikki Burger</span>
+<div class="price">₹60</div>
+</div>
+
+<div class="item">
+<span>Veg Classic Burger</span>
+<div class="price">₹80</div>
+</div>
+
+<div class="item">
+<span>Double Decker Burger</span>
+<div class="price">₹100</div>
+</div>
+
+<div class="item">
+<span>Spicy Paneer Burger</span>
+<div class="price">₹110</div>
+</div>
 
 </div>
 
@@ -219,10 +294,25 @@ font-size:24px;
 <div class="card">
 <h2>Pizza</h2>
 
-<div class="item"><span>Margherita</span><div class="price">₹99</div></div>
-<div class="item"><span>Golden Corn</span><div class="price">₹110</div></div>
-<div class="item"><span>Veggie Deluxe</span><div class="price">₹110</div></div>
-<div class="item"><span>Cheese Burst</span><div class="price">₹110</div></div>
+<div class="item">
+<span>Margherita</span>
+<div class="price">₹99</div>
+</div>
+
+<div class="item">
+<span>Golden Corn</span>
+<div class="price">₹110</div>
+</div>
+
+<div class="item">
+<span>Veggie Deluxe</span>
+<div class="price">₹110</div>
+</div>
+
+<div class="item">
+<span>Cheese Burst</span>
+<div class="price">₹110</div>
+</div>
 
 </div>
 
@@ -231,10 +321,25 @@ font-size:24px;
 <div class="card">
 <h2>Fries</h2>
 
-<div class="item"><span>Salted Fries</span><div class="price">₹60</div></div>
-<div class="item"><span>Masala Fries</span><div class="price">₹70</div></div>
-<div class="item"><span>Peri Peri Fries</span><div class="price">₹80</div></div>
-<div class="item"><span>Cheese Fries</span><div class="price">₹90</div></div>
+<div class="item">
+<span>Salted Fries</span>
+<div class="price">₹60</div>
+</div>
+
+<div class="item">
+<span>Masala Fries</span>
+<div class="price">₹70</div>
+</div>
+
+<div class="item">
+<span>Peri Peri Fries</span>
+<div class="price">₹80</div>
+</div>
+
+<div class="item">
+<span>Cheese Fries</span>
+<div class="price">₹90</div>
+</div>
 
 </div>
 
@@ -252,7 +357,12 @@ searchInput.addEventListener('keyup', function(){
 
 let filter = searchInput.value.toLowerCase();
 
-let items = document.querySelectorAll('.item');
+let cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+
+let items = card.querySelectorAll('.item');
+let found = false;
 
 items.forEach(item => {
 
@@ -260,11 +370,45 @@ let text = item.innerText.toLowerCase();
 
 if(text.includes(filter)){
 item.style.display = 'flex';
+found = true;
 }else{
 item.style.display = 'none';
 }
 
 });
+
+if(found){
+card.style.display = 'block';
+card.classList.add('active');
+
+card.scrollIntoView({
+behavior:'smooth',
+block:'center'
+});
+
+}else{
+card.style.display = 'none';
+card.classList.remove('active');
+}
+
+});
+
+if(filter === ''){
+
+cards.forEach(card => {
+
+card.style.display='block';
+card.classList.remove('active');
+
+let items = card.querySelectorAll('.item');
+
+items.forEach(item=>{
+item.style.display='flex';
+});
+
+});
+
+}
 
 });
 
